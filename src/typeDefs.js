@@ -14,12 +14,6 @@ export const typeDefs = gql`
     updateEvent(leadId: ID!, payload: Int!): Event!
   }
   type Subscription {
-    eventUpdated: Event!
-  }
-
-  schema {
-    query: Query
-    mutation: Mutation
-    subscription: Subscription
+    eventUpdated: [Event!]!
   }
 `;

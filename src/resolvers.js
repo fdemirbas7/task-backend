@@ -18,12 +18,7 @@ export const resolvers = {
     updateEvent: async (_, { leadId, payload }) => {
       const event = await Event.findOne({ leadId });
       event.value += payload;
-      pubsub.publish('EVENT_UPDATED', {
-        eventUpdated: {
-          leadId,
-          value: event.value,
-        },
-      });
+      pubsub.publish('EVENT_UPDATED', { eventUpdated: await Event.find() });
       return event.save();
     },
   },
